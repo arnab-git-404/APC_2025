@@ -9,7 +9,7 @@ export const clientTestimonials: Testimonials[] = [
   {
     id: 1,
     title: "Kelsey Donnellan",
-    role: "LittlePineapple",
+    role: "Founder, Little Pineapple",
     description:
       "Team APC put their heart and expertise into making every process smooth. With their support, I was able to build confidence in marketing — something that had always felt daunting since I started my venture. I can truly vouch for this talented team that is dedicated to building brands successfully.",
   },
