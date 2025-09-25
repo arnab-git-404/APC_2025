@@ -26,7 +26,7 @@ const bricolageGrotesque = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
   title:
-    "Aampanna Creations - Startup Marketing Agency | Web Design & Branding, Delhi NCR",
+    "Aam Pannaa Creations - Startup Marketing Agency | Web Design & Branding, Delhi NCR",
   description:
     "Empowering startups & women-led ventures with branding, web design, and social media management. Ghaziabad’s creative marketing experts.",
   keywords: [
