@@ -9,7 +9,7 @@ import Image from "next/image";
 
 
   export const metadata: Metadata = {
-    title: "Web Development Services | Aampanna Creations",
+    title: "Services | Aampanna Creations",
     description:
       "Custom websites, web apps, and e-commerce solutions. Serving clients in India and across the globe.",
     keywords: [
