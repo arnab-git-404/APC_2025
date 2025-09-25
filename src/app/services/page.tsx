@@ -1,10 +1,39 @@
 "use client";
 
-
 import { clientTestimonials } from "@/data/testimonials";
 import { useEffect, useRef, useState } from "react";
 import { projects } from "@/data/projects";
+import type { Metadata } from "next";
 import Image from "next/image";
+
+
+
+  export const metadata: Metadata = {
+    title: "Web Development Services | Aampanna Creations",
+    description:
+      "Custom websites, web apps, and e-commerce solutions. Serving clients in India and across the globe.",
+    keywords: [
+      "startup marketing agency",
+      "brand identity for startups",
+      "women-led business marketing",
+      "B2B brand development",
+      "B2B brand development",
+      "digital marketing consulting",
+      "Web Development",
+      "Next.js Development",
+      "Web Design India",
+      "Startup Services",
+      "mentorship for startups",
+      "podcast production",
+      "branding services",
+      "Venture capital marketing",
+
+    ],
+    alternates: {
+      canonical: "https://www.aampanna.net/",
+    },
+  };
+
 
 const Projects = () => {
   const [isClient, setIsClient] = useState(false);
@@ -273,6 +302,9 @@ const Projects = () => {
       </div>
     </section>
   );
+
+
+
 
   return (
     <div className="fade-in">
