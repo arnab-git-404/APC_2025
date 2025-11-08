@@ -122,6 +122,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bricolageGrotesque.variable} antialiased`}
       >
+        <!-- Google tag (gtag.js) -->
+<Script async src="https://www.googletagmanager.com/gtag/js?id=G-R4W9X1147V"></Script>
+<Script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R4W9X1147V');
+</Script>
+          
         {/* ✅ Google Tag Manager (noscript) */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
