@@ -66,6 +66,9 @@ const clientLogos: Client[] = [
   { name: "Luminary Pathways", img: "/clientLogos/luminaryPathways.png" },
   { name: "Escape Velocity", img: "/clientLogos/ev.png" },
   { name: "One7", img: "/clientLogos/one7logo.png" },
+  { name: "LiveIn My Dream", img: "/clientLogos/livinMyDream.jpeg" },
+  { name: "SSY" , img: "/clientLogos/SSY.jpeg" },
+  { name: "The Quiet Reset", img: "/clientLogos/theQuietReset.jpeg" },
 ];
 
 const Services: React.FC = () => {

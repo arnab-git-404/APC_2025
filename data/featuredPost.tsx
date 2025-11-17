@@ -49,9 +49,9 @@ export const featuredPosts: Post[] = [
   },
   {
     id:6,
-    title: "Strategic Pivots",
-    link: "https://www.linkedin.com/posts/authornikitasingh_podcast-growth-community-activity-7323244180376354817-vq06/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC-PqnABAQzSoy5nggyAIhFWc7wckukyHPw",
-    img: "/featuredPost/Strategic Pivots.svg",
+    title: "Live Mint Article",
+    link: "https://www.livemint.com/companies/start-ups/venture-capital-firms-india-startup-investment-startup-funding-content-marketing-arkam-ventures-strategy-11758104204646.html",
+    img: "/featuredPost/liveMint.jpeg",
     description:""
   }
 ];
