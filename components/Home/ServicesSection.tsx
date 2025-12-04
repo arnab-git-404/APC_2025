@@ -69,6 +69,7 @@ const clientLogos: Client[] = [
   { name: "LiveIn My Dream", img: "/clientLogos/livinMyDream.jpeg" },
   { name: "SSY" , img: "/clientLogos/ssy.jpeg" },
   { name: "The Quiet Reset", img: "/clientLogos/theQuietReset.jpeg" },
+  { name: "ShopPureZen", img: "/clientLogos/purezen.png" },
 ];
 
 const Services: React.FC = () => {
