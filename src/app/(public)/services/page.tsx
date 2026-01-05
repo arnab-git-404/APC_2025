@@ -1,8 +1,7 @@
 'use client';
 
-import { clientTestimonials } from "@/data/testimonials";
 import { useEffect, useRef, useState } from "react";
-import { projects } from "@/data/projects";
+import { projects } from "@/src/data/projects";
 import type { Metadata } from "next";
 import Image from "next/image";
 

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Button } from '@/src/components/ui/button';
+import { Card } from '@/src/components/ui/card';
 import { toast } from 'react-hot-toast';
 import Image from 'next/image';
 import { FaEdit, FaTrash, FaPlus, FaStar } from 'react-icons/fa';
@@ -20,6 +20,7 @@ interface Blog {
 }
 
 export default function AdminDashboard() {
+  
   const router = useRouter();
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);

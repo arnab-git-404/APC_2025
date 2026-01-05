@@ -1,7 +1,5 @@
-
-"use client";
-
 import Image from "next/image";
+export const dynamic = 'force-static';
 
 const About = () => {
   return (

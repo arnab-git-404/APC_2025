@@ -1,6 +1,8 @@
 
-import { clientTestimonials } from "@/data/testimonials";
+import { clientTestimonials } from "@/src/data/testimonials";
 import React from "react";
+
+export const dynamic = 'force-static';
 
 
 interface Testimonials {
@@ -12,7 +14,6 @@ interface Testimonials {
 
 const TestimonialsPage: React.FC = () => {
   // Sample data - replace with your actual portfolioItems data
-
 
   // Function to get initials from name
   const getInitials = (name: string): string => {

@@ -1,9 +1,8 @@
 'use client'
 
-import { FaCircleArrowLeft } from "react-icons/fa6";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { blogData } from "@/data/blogData";
+import { blogData } from "@/src/data/blogData";
 import { toast } from "react-hot-toast";
 import Image from "next/image";
 

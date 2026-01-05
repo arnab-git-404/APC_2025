@@ -5,11 +5,10 @@ import Image from "next/image";
 import {
   Linkedin,
   Instagram,
-  ArrowRight,
   Mail,
-  Phone,
   MapPin,
 } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
@@ -23,6 +22,8 @@ const Footer = () => {
   ];
 
   const supportLinks = [
+    { name: "FAQs", href: "/faqs" },
+    { name: "Tool Kit", href: "/toolkit" },
     { name: "Contact Us", href: "/contact" },
     { name: "Privacy policy", href: "/privacy-policy" },
   ];
@@ -107,7 +108,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {navigationLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="group flex items-center space-x-2 text-black/70 hover:text-black transition-all duration-200"
                     onMouseEnter={() => setHoveredLink(link.name)}
@@ -131,7 +132,7 @@ const Footer = () => {
                         }`}
                       ></span>
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -145,7 +146,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {supportLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="group flex items-center space-x-2 text-black/70 hover:text-black transition-all duration-200"
                     onMouseEnter={() => setHoveredLink(link.name)}
@@ -169,7 +170,7 @@ const Footer = () => {
                         }`}
                       ></span>
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

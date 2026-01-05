@@ -1,11 +1,16 @@
 "use client";
 
-import { clientTestimonials } from "@/data/testimonials";
+import { clientTestimonials } from "@/src/data/testimonials";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import React from "react";
+import { useRouter } from "next/navigation";
+
 
 const Testimonials = () => {
+
+  const router = useRouter();
+
   return (
     <section className="py-20">
       <div className=" mx-auto px-4 md:px-8 lg:px-16  ">
@@ -28,7 +33,10 @@ const Testimonials = () => {
           <div className="flex justify-center lg:justify-end lg:flex-shrink-0">
             <button
               onClick={() => {
-                toast.success("Navigating to all reviews...");
+                // start();
+                toast.success("Forwarding to all reviews...");
+                router.push("/testimonials");
+                // complete();
               }}
               className="hover:cursor-pointer relative px-6 md:px-10 py-3 md:py-4 rounded-full bg-[#FF69B4] text-black font-medium text-lg md:text-xl
         shadow-[0px_8px_0px_rgba(0,0,0,1)] transition-transform duration-200 hover:translate-x-1 hover:translate-y-1 hover:shadow-[0px_6px_0px_rgba(0,0,0,1)]"

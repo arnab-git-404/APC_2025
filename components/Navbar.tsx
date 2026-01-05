@@ -4,22 +4,57 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  HiHome, 
-  HiInformationCircle, 
-  HiCog, 
-  HiUserGroup, 
+import { FaTools } from "react-icons/fa";
+
+import {
+  HiHome,
+  HiInformationCircle,
+  HiCog,
+  HiUserGroup,
   HiDocumentText,
-  HiChat 
+  HiChat,
+  HiChevronDown,
 } from "react-icons/hi";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 const Navbar = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isToolkitExpanded, setIsToolkitExpanded] = useState(false);
 
   const isActive = (path: string): boolean => {
     return pathname === path;
   };
+
+  const toolkitItems = [
+    {
+      href: "/toolkit/seo-tools",
+      title: "Workshop",
+      description: "Optimize your website for search engines",
+    },
+    {
+      href: "/toolkit/design-resources",
+      title: "Resume Builder",
+      description: "Templates and design assets",
+    },
+    {
+      href: "/toolkit/marketing-tools",
+      title: "Marketing Tools",
+      description: "Tools to boost your marketing",
+    },
+    {
+      href: "/toolkit/analytics",
+      title: "Analytics",
+      description: "Track and analyze your performance",
+    },
+  ];
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -29,18 +64,23 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const toggleToolkit = () => {
+    setIsToolkitExpanded(!isToolkitExpanded);
+  };
+
   // Enhanced smooth scroll function
   const smoothScrollToForm = () => {
-    const formElement = document.getElementById('contact-form');
+    const formElement = document.getElementById("contact-form");
     if (formElement) {
       // Calculate offset to account for navbar height
       const navbarHeight = 80; // Adjust based on your navbar height
       const elementPosition = formElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - navbarHeight;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
@@ -61,7 +101,7 @@ const Navbar = () => {
       const timer = setTimeout(() => {
         smoothScrollToForm();
       }, 500);
-      
+
       return () => clearTimeout(timer);
     }
   }, [pathname]);
@@ -89,7 +129,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className=" relative z-50">
+      <nav className="relative top-0 left-0 right-0 z-50">
         <div className=" mx-auto px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#FFFDE8] to-[#FFFBD2]  ">
           <div className="flex justify-between items-center h-18 font-semibold ">
             {/* Logo */}
@@ -99,7 +139,7 @@ const Navbar = () => {
             >
               <Image
                 src="/aampannalogo-svg.png"
-                alt="Logo"
+                alt="Aam Pannaa Creations | Best Marketingg Agency in India"
                 width={90}
                 height={32}
                 className="w-auto h-8 sm:h-10"
@@ -121,8 +161,10 @@ const Navbar = () => {
                 href="/about"
                 className={`flex items-center gap-2 
                    text-lg font-extralight hover:font-semibold transition-colors hover:text-primary ${
-                  isActive("/about") ? "text-primary" : "text-muted-foreground"
-                }`}
+                     isActive("/about")
+                       ? "text-primary"
+                       : "text-muted-foreground"
+                   }`}
               >
                 <HiInformationCircle className="w-5 h-5" />
                 Our Story
@@ -138,6 +180,46 @@ const Navbar = () => {
                 <HiCog className="w-5 h-5" />
                 Services
               </Link>
+
+              {/* Tool Kit with Dropdown using shadcn/ui */}
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger
+                      className={`flex items-center gap-2 text-lg font-extralight hover:font-semibold transition-colors hover:text-primary bg-transparent ${
+                        isActive("/toolkit")
+                          ? "text-primary"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      <FaTools className="w-5 h-5" />
+                      Tool Kit
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                        {toolkitItems.map((item) => (
+                          <li key={item.href}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={item.href}
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="text-sm font-medium leading-none">
+                                  {item.title}
+                                </div>
+                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                  {item.description}
+                                </p>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+
               <Link
                 href="/team"
                 className={`flex items-center gap-2  text-lg font-extralight hover:font-semibold transition-colors hover:text-primary ${
@@ -159,15 +241,14 @@ const Navbar = () => {
             </div>
 
             {/* Desktop CTA Button */}
-            <Link 
+            <Link
               href="/#contact-form"
               onClick={handleContactClick}
               // className="text-black hover:cursor-pointer bg-[#FFD500] rounded-2xl px-4 py-2 h-8 hidden sm:flex items-center gap-2 minimal-button minimal-button-primary text-sm lg:text-base"
-            // >
-            className="hover:cursor-pointer relative  rounded-full bg-[#FF69B4] text-black font-medium text-lg sm:flex item-center  gap-2 px-2 py-1 hidden
+              // >
+              className="hover:cursor-pointer relative  rounded-full bg-[#FF69B4] text-black font-medium text-lg sm:flex item-center  gap-2 px-2 py-1 hidden
         shadow-[0px_8px_0px_rgba(0,0,0,1)] transition-transform duration-200 hover:translate-x-1 hover:translate-y-1 hover:shadow-[0px_6px_0px_rgba(0,0,0,1)]"
             >
-
               <HiChat className="w-5 h-5 mt-1 " />
               {`Let's chat`}
             </Link>
@@ -217,6 +298,7 @@ const Navbar = () => {
       )}
 
       {/* Mobile sliding panel */}
+
       <div
         className={`fixed top-0 right-0 z-50 h-full w-80 bg-white border-l border-border shadow-2xl transform transition-transform duration-300 ease-in-out md:hidden ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
@@ -227,7 +309,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between p-4 border-b border-border">
             <Image
               src="/aampannalogo-svg.png"
-              alt="Logo"
+              alt="Aam Pannaa Creations | Best Marketing Agency in India"
               width={80}
               height={28}
               className="w-auto h-7"
@@ -254,54 +336,101 @@ const Navbar = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="flex-1 px-4 py-6 space-y-2">
-            {[
-              { href: "/", label: "Home", icon: HiHome },
-              { href: "/about", label: "About us", icon: HiInformationCircle },
-              { href: "/services", label: "Services", icon: HiCog },
-              { href: "/team", label: "Our team", icon: HiUserGroup },
-              { href: "/blog", label: "Blog", icon: HiDocumentText },
-            ].map((item, index) => {
-              const IconComponent = item.icon;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={closeMobileMenu}
-                  className={`group flex items-center px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 transform hover:scale-[1.02] ${
-                    isActive(item.href)
-                      ? "text-primary bg-accent shadow-sm"
-                      : "text-muted-foreground hover:text-primary hover:bg-accent"
+          <div className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+            {/* Home Link */}
+            <Link
+              href="/"
+              onClick={closeMobileMenu}
+              className={`group flex items-center px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 transform hover:scale-[1.02] ${
+                isActive("/")
+                  ? "text-primary bg-accent shadow-sm"
+                  : "text-muted-foreground hover:text-primary hover:bg-accent"
+              }`}
+            >
+              <HiHome className="w-5 h-5 mr-3" />
+              <span className="flex-1">Home</span>
+            </Link>
+
+            {/* Services Link */}
+            <Link
+              href="/services"
+              onClick={closeMobileMenu}
+              className={`group flex items-center px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 transform hover:scale-[1.02] ${
+                isActive("/services")
+                  ? "text-primary bg-accent shadow-sm"
+                  : "text-muted-foreground hover:text-primary hover:bg-accent"
+              }`}
+            >
+              <HiCog className="w-5 h-5 mr-3" />
+              <span className="flex-1">Services</span>
+            </Link>
+
+            {/* Tool Kit Dropdown */}
+            <div className="space-y-2">
+              <button
+                onClick={toggleToolkit}
+                className={`group flex items-center w-full px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
+                  pathname.startsWith("/toolkit")
+                    ? "text-primary bg-accent shadow-sm"
+                    : "text-muted-foreground hover:text-primary hover:bg-accent"
+                }`}
+              >
+                <FaTools className="w-5 h-5 mr-3" />
+                <span className="flex-1 text-left">Tool Kit</span>
+                <HiChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    isToolkitExpanded ? "rotate-180" : ""
                   }`}
-                  style={{
-                    animationDelay: `${index * 100}ms`,
-                    animation: isMobileMenuOpen
-                      ? "slideInRight 0.3s ease-out forwards"
-                      : "none",
-                  }}
-                >
-                  <IconComponent className="w-5 h-5 mr-3" />
-                  <span className="flex-1">{item.label}</span>
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-200 ${
-                      isActive(item.href)
-                        ? "text-primary"
-                        : "text-muted-foreground group-hover:translate-x-1"
-                    }`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                    />
-                  </svg>
-                </Link>
-              );
-            })}
+                />
+              </button>
+
+              {/* Toolkit Submenu */}
+              {isToolkitExpanded && (
+                <div className="ml-4 space-y-1 animate-slideDown">
+                  {toolkitItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={closeMobileMenu}
+                      className="block px-4 py-2 rounded-lg text-sm text-muted-foreground hover:text-primary hover:bg-accent transition-colors"
+                    >
+                      <div className="font-medium">{item.title}</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">
+                        {item.description}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Team Link */}
+            <Link
+              href="/team"
+              onClick={closeMobileMenu}
+              className={`group flex items-center px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 transform hover:scale-[1.02] ${
+                isActive("/team")
+                  ? "text-primary bg-accent shadow-sm"
+                  : "text-muted-foreground hover:text-primary hover:bg-accent"
+              }`}
+            >
+              <HiUserGroup className="w-5 h-5 mr-3" />
+              <span className="flex-1">Our team</span>
+            </Link>
+
+            {/* Blog Link */}
+            <Link
+              href="/blog"
+              onClick={closeMobileMenu}
+              className={`group flex items-center px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 transform hover:scale-[1.02] ${
+                isActive("/blog")
+                  ? "text-primary bg-accent shadow-sm"
+                  : "text-muted-foreground hover:text-primary hover:bg-accent"
+              }`}
+            >
+              <HiDocumentText className="w-5 h-5 mr-3" />
+              <span className="flex-1">Blog</span>
+            </Link>
           </div>
 
           {/* CTA Button */}
@@ -312,17 +441,11 @@ const Navbar = () => {
                 closeMobileMenu();
                 if (pathname === "/") {
                   e.preventDefault();
-                  setTimeout(() => smoothScrollToForm(), 400); 
+                  setTimeout(() => smoothScrollToForm(), 400);
                 }
-              }
-            
-            }
+              }}
               className="w-full flex items-center justify-center gap-2 minimal-button minimal-button-primary transform transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
             >
-
-
-
-
               <HiChat className="w-5 h-5" />
               {`Let's chat`}
             </Link>
@@ -331,6 +454,19 @@ const Navbar = () => {
       </div>
 
       {/* CSS for animations */}
+      {/* <style jsx>{`
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      `}</style> */}
+
       <style jsx>{`
         @keyframes slideInRight {
           from {
@@ -341,6 +477,21 @@ const Navbar = () => {
             opacity: 1;
             transform: translateX(0);
           }
+        }
+
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            max-height: 0;
+          }
+          to {
+            opacity: 1;
+            max-height: 500px;
+          }
+        }
+
+        .animate-slideDown {
+          animation: slideDown 0.3s ease-out;
         }
       `}</style>
     </>

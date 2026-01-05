@@ -7,6 +7,7 @@ import Hero from "@/components/Home/Hero";
 import Form from '@/components/Home/Form';
 import React from 'react'
 
+export const dynamic = 'force-static';
 
 export default function Home() {
   return (

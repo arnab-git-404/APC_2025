@@ -1,10 +1,13 @@
 "use client";
 
 import { FaLinkedinIn } from "react-icons/fa";
-import { teamData } from "@/data/teamData";
+import { teamData } from "@/src/data/teamData";
 import { useState } from "react";
+import Image from "next/image";
 
-const Team = () => {
+import React from "react";
+
+export default function Members() {
   const [hoveredMember, setHoveredMember] = useState<TeamMember | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -42,7 +45,6 @@ const Team = () => {
       onMouseEnter={(e) => handleMouseEnter(member, e)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      
     >
       {/* Desktop: Enhanced hover with overlay */}
       <div
@@ -51,20 +53,15 @@ const Team = () => {
       >
         {/* Avatar with overlay on hover */}
         <div className="relative w-40 h-40 mx-auto rounded-full overflow-hidden shadow-lg transition-all duration-500 group-hover:scale-130 group-hover:shadow-2xl">
-          <img
+          <Image
             src={member.image}
             alt={member.name}
             className="w-full h-full object-cover transition-all duration-500"
           />
-
-          
         </div>
 
         {/* Floating elements around the circle */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-         
-          
-
           {/* Name Badge */}
           <span className="absolute -bottom-8 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold text-sm px-4 py-2 rounded-full transform opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-out delay-300 shadow-lg pointer-events-auto">
             {member.name}
@@ -82,7 +79,7 @@ const Team = () => {
         style={{ animationDelay: `${index * 0.1}s` }}
       >
         <div className="w-32 h-32 mx-auto rounded-full overflow-hidden shadow-lg mb-4">
-          <img
+          <Image
             src={member.image}
             alt={member.name}
             className="w-full h-full object-cover"
@@ -127,7 +124,7 @@ const Team = () => {
                 {/* Header with image and basic info */}
                 <div className="flex items-center space-x-3 mb-3">
                   <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-pink-300 flex-shrink-0">
-                    <img
+                    <Image
                       src={hoveredMember.image}
                       alt={hoveredMember.name}
                       className="w-full h-full object-cover"
@@ -262,7 +259,4 @@ const Team = () => {
       </section>
     </div>
   );
-};
-
-export default Team;
-
+}
