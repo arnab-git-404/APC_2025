@@ -8,8 +8,8 @@ export async function GET() {
     description: "Join us for an exciting hands-on workshop on modern web development!",
     date: "2026-02-15",
     link: "https://example.com/register",
-    // type: "banner", // or "popup"
-    type: "popup"
+    type: "banner", // or "popup"
+    // type: "popup"
 
   };
 

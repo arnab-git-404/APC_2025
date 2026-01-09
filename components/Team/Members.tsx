@@ -53,9 +53,10 @@ export default function Members() {
       >
         {/* Avatar with overlay on hover */}
         <div className="relative w-40 h-40 mx-auto rounded-full overflow-hidden shadow-lg transition-all duration-500 group-hover:scale-130 group-hover:shadow-2xl">
-          <Image
+          <img
             src={member.image}
             alt={member.name}
+            
             className="w-full h-full object-cover transition-all duration-500"
           />
         </div>
@@ -79,9 +80,10 @@ export default function Members() {
         style={{ animationDelay: `${index * 0.1}s` }}
       >
         <div className="w-32 h-32 mx-auto rounded-full overflow-hidden shadow-lg mb-4">
-          <Image
+          <img
             src={member.image}
             alt={member.name}
+            
             className="w-full h-full object-cover"
           />
         </div>
@@ -124,9 +126,10 @@ export default function Members() {
                 {/* Header with image and basic info */}
                 <div className="flex items-center space-x-3 mb-3">
                   <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-pink-300 flex-shrink-0">
-                    <Image
+                    <img
                       src={hoveredMember.image}
                       alt={hoveredMember.name}
+                      
                       className="w-full h-full object-cover"
                     />
                   </div>

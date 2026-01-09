@@ -129,9 +129,13 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="relative top-0 left-0 right-0 z-50">
+      {/* <nav className="relative top-0 left-0 right-0 z-50">
         <div className=" mx-auto px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#FFFDE8] to-[#FFFBD2]  ">
-          <div className="flex justify-between items-center h-18 font-semibold ">
+          <div className="flex justify-between items-center h-18 font-semibold "> */}
+
+      <nav className="fixed top-[52px] left-0 right-0 z-50 bg-gradient-to-r from-[#FFFDE8] to-[#FFFBD2]">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-18 font-semibold">
             {/* Logo */}
             <Link
               href="/"
@@ -182,7 +186,7 @@ const Navbar = () => {
               </Link>
 
               {/* Tool Kit with Dropdown using shadcn/ui */}
-              <NavigationMenu>
+              {/* <NavigationMenu>
                 <NavigationMenuList>
                   <NavigationMenuItem>
                     <NavigationMenuTrigger
@@ -218,7 +222,7 @@ const Navbar = () => {
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                 </NavigationMenuList>
-              </NavigationMenu>
+              </NavigationMenu> */}
 
               <Link
                 href="/team"

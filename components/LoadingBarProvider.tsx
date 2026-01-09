@@ -11,7 +11,7 @@ export default function LoadingBarProvider({
     <LoadingBarContainer
       props={{
         color: "blue",
-        height: 5,
+        height: 4,
       }}
     >
       {children}
