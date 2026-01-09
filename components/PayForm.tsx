@@ -21,9 +21,11 @@ interface PayFormProps {
   onClose: () => void;
 }
 
-export default function PayForm(
-    { workshopId, workshopData, onClose }: PayFormProps
-) {
+export default function PayForm({
+  workshopId,
+  workshopData,
+  onClose,
+}: PayFormProps) {
   const loadScript = () =>
     new Promise((resolve) => {
       const script = document.createElement("script");

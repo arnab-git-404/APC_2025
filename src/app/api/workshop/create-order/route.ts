@@ -9,7 +9,7 @@ const razorpay = new Razorpay({
 });
 
 export async function POST(req: Request) {
-  const { name, email, phone, amount } = await req.json();
+  const { name, email, phone, amount, workshopId } = await req.json();
 
   await connectDB();
 
@@ -17,8 +17,7 @@ export async function POST(req: Request) {
     amount: amount * 100,
     currency: "INR",
     notes: {
-        workshopId,
-        workshopTitle,
+        workshopId
     },
   });
 
