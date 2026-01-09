@@ -8,7 +8,22 @@ declare global {
   }
 }
 
-export default function PayForm({ workshopId }: { workshopId: string }) {
+interface PayFormProps {
+  workshopId: string | null;
+  workshopData?: {
+    id: string;
+    title: string;
+    price: number;
+    date: string;
+    time: string;
+    instructor: string;
+  };
+  onClose: () => void;
+}
+
+export default function PayForm(
+    { workshopId, workshopData, onClose }: PayFormProps
+) {
   const loadScript = () =>
     new Promise((resolve) => {
       const script = document.createElement("script");
