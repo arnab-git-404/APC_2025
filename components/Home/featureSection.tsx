@@ -1,7 +1,7 @@
 
 'use client'
 
-import { featuredPosts } from '@/src/data/featuredPost';
+import { featuredPosts } from '@/data/featuredPost';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';

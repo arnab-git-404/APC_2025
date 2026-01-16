@@ -1,5 +1,5 @@
 
-import { clientTestimonials } from "@/src/data/testimonials";
+import { clientTestimonials } from "@/data/testimonials";
 import React from "react";
 
 export const dynamic = 'force-static';
