@@ -1,7 +1,7 @@
 "use client";
 
 import { FaLinkedinIn } from "react-icons/fa";
-import { teamData } from "@/src/data/teamData";
+import { teamData } from "@/data/teamData";
 import { useState } from "react";
 import Image from "next/image";
 

@@ -12,9 +12,6 @@ export default function RootLayout({
   return (
     <main>
       <WorkshopBanner />
-      {/* <Navbar /> */}
-      {/* <Toaster /> */}
-      {/* {children} */}
 
       <div className="mt-[48px]"> {/* Push navbar down by banner height */}
         <Navbar />

@@ -2,6 +2,8 @@
 
 "use client";
 
+import toast from "react-hot-toast";
+
 declare global {
   interface Window {
     Razorpay: any;
@@ -72,9 +74,12 @@ export default function PayForm({
         const verifyResult = await verifyResponse.json();
 
         if (verifyResult.success) {
-          alert("Payment successful! You are registered 🎉");
+          // alert("Payment successful! You are registered 🎉");
+          toast.success("Payment successful! You are registered 🎉", 
+          { duration: 5000 });
         } else {
-          alert("Payment verification failed. Please contact support.");
+          // alert("Payment verification failed. Please contact support.");
+          toast.error("Payment verification failed. Please contact support.", { duration: 5000 });
         }
       },
       prefill: {

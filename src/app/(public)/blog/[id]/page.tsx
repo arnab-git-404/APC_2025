@@ -3,7 +3,7 @@
 import { useRouter, useParams } from "next/navigation";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import React, { useEffect, useState } from "react";
-import { blogData } from "@/src/data/blogData";
+import { blogData } from "@/data/blogData";
 import { toast } from "react-hot-toast";
 import Image from "next/image";
 

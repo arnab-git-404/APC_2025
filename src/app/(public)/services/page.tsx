@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
-import { projects } from "@/src/data/projects";
+import { projects } from "@/data/projects";
 import type { Metadata } from "next";
 import Image from "next/image";
 

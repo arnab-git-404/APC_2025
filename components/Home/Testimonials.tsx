@@ -1,6 +1,6 @@
 "use client";
 
-import { clientTestimonials } from "@/src/data/testimonials";
+import { clientTestimonials } from "@/data/testimonials";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import React from "react";
