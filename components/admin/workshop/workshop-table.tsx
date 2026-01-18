@@ -15,39 +15,28 @@ interface Workshop {
   title: string;
   description: string;
   date: string;
+  time?: string;
   duration?: string;
+  platform?: string;
   instructor?: string;
   capacity?: number;
+  enrolled?: number;
   price?: number;
+  topics?: string[];
+  status?: string;
 }
 
 interface WorkshopTableProps {
   workshops: Workshop[];
-  onEdit?: (workshop: Workshop) => void;
   onDelete?: (id: string) => void;
 }
 
-export function WorkshopTable({
-  workshops,
-  onDelete,
-}: WorkshopTableProps) {
-  const getStatus = (date: string) => {
-    const workshopDate = new Date(date);
-    const now = new Date();
-
-    if (workshopDate > now) {
-      return "upcoming";
-    } else if (workshopDate.toDateString() === now.toDateString()) {
-      return "today";
-    } else {
-      return "past";
-    }
-  };
-
+export function WorkshopTable({ workshops, onDelete }: WorkshopTableProps) {
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleString("en-IN", {
-      dateStyle: "medium",
-      timeStyle: "short",
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
@@ -57,9 +46,9 @@ export function WorkshopTable({
         <TableRow>
           <TableHead>Title</TableHead>
           <TableHead>Date & Time</TableHead>
-          <TableHead>Duration</TableHead>
+          <TableHead>Platform</TableHead>
           <TableHead>Instructor</TableHead>
-          <TableHead>Capacity</TableHead>
+          <TableHead>Enrollment</TableHead>
           <TableHead>Price</TableHead>
           <TableHead>Status</TableHead>
           <TableHead className="text-right">Actions</TableHead>
@@ -69,56 +58,66 @@ export function WorkshopTable({
       <TableBody>
         {workshops.length === 0 ? (
           <TableRow>
-            <TableCell
-              colSpan={8}
-              className="text-center text-muted-foreground"
-            >
+            <TableCell colSpan={8} className="text-center text-muted-foreground">
               No workshops found
             </TableCell>
           </TableRow>
         ) : (
           workshops.map((workshop) => (
             <TableRow key={workshop._id}>
-              <TableCell className="font-medium">{workshop.title}</TableCell>
-
-              <TableCell>{formatDate(workshop.date)}</TableCell>
-
-              <TableCell>{workshop.duration || "-"}</TableCell>
-
-              <TableCell>{workshop.instructor || "-"}</TableCell>
-
-              <TableCell>{workshop.capacity || "-"}</TableCell>
-
-              <TableCell>
-                {workshop.price ? `₹${workshop.price}` : "Free"}
+              <TableCell className="font-medium">
+                <div>
+                  <p className="font-semibold">{workshop.title}</p>
+                  <p className="text-sm text-gray-500 line-clamp-1">
+                    {workshop.description}
+                  </p>
+                </div>
               </TableCell>
-
+              <TableCell>
+                <div className="text-sm">
+                  <p>{formatDate(workshop.date)}</p>
+                  {workshop.time && (
+                    <p className="text-gray-500">{workshop.time}</p>
+                  )}
+                </div>
+              </TableCell>
+              <TableCell>{workshop.platform || "N/A"}</TableCell>
+              <TableCell>{workshop.instructor}</TableCell>
+              <TableCell>
+                <div className="text-sm">
+                  <p>
+                    {workshop.enrolled || 0} / {workshop.capacity}
+                  </p>
+                  <p className="text-gray-500">
+                    {workshop.capacity
+                      ? Math.round(((workshop.enrolled || 0) / workshop.capacity) * 100)
+                      : 0}
+                    % filled
+                  </p>
+                </div>
+              </TableCell>
+              <TableCell>₹{workshop.price?.toFixed(2)}</TableCell>
               <TableCell>
                 <Badge
                   variant={
-                    getStatus(workshop.date) === "upcoming"
+                    new Date(workshop.date) > new Date()
                       ? "default"
-                      : getStatus(workshop.date) === "today"
-                        ? "secondary"
-                        : "outline"
+                      : "secondary"
                   }
                 >
-                  {getStatus(workshop.date)}
+                  {new Date(workshop.date) > new Date() ? "Upcoming" : "Past"}
                 </Badge>
               </TableCell>
-
               <TableCell className="text-right">
-                <div className="flex justify-end gap-2">
-                  {onDelete && (
+                {onDelete && (
                   <Button
-                    variant="default"
-                    // size="icon"
+                    variant="ghost"
+                    size="icon"
                     onClick={() => onDelete(workshop._id)}
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
-                  )} 
-                </div>
+                )}
               </TableCell>
             </TableRow>
           ))

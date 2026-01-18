@@ -126,7 +126,8 @@ declare global {
 }
 
 interface PayFormProps {
-  workshopId: string;
+  workshopId: string | null,
+  workshopPrice: number | undefined,
   onClose: () => void;
 }
 
@@ -146,8 +147,9 @@ const loadRazorpay = () =>
     document.body.appendChild(script);
   });
 
-export default function PayForm({ workshopId, onClose }: PayFormProps) {
+export default function PayForm({ workshopId, workshopPrice, onClose }: PayFormProps) {
   const [loading, setLoading] = useState(false);
+  console.log('check price' , workshopId)
 
   const handlePay = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -225,7 +227,7 @@ export default function PayForm({ workshopId, onClose }: PayFormProps) {
         disabled={loading}
         className="bg-black text-white px-4 py-2 w-full"
       >
-        {loading ? "Processing..." : "Pay ₹499"}
+        {loading ? "Processing..." : `Pay ₹${workshopPrice}`}
       </button>
     </form>
   );
