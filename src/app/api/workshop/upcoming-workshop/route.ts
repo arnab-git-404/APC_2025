@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 import { Workshop } from '@/models/workshop';
 
-    
 export async function GET() {
   try {
     await connectDB();
@@ -11,16 +10,33 @@ export async function GET() {
     
     // Find all workshops where date is greater than current date
     const upcomingWorkshops = await Workshop.find({
-      date: { $gt: now }
+      date: { $gt: now },
+      // status: 'upcoming'
     })
     .sort({ date: 1 }) // Sort by date ascending (earliest first)
     .lean();
     
+    // Clean and format the workshops
+    const formattedWorkshops = upcomingWorkshops.map((workshop: any) => ({
+      id: workshop._id.toString(),
+      title: workshop.title,
+      description: workshop.description,
+      date: workshop.date,
+      time: workshop.time,
+      duration: workshop.duration,
+      platform: workshop.platform,
+      instructor: workshop.instructor,
+      capacity: workshop.capacity,
+      enrolled: workshop.enrolled || 0,
+      price: workshop.price,
+      topics: workshop.topics || [],
+    }));
+    
     return NextResponse.json(
       {
         success: true,
-        count: upcomingWorkshops.length,
-        workshops: JSON.parse(JSON.stringify(upcomingWorkshops))
+        count: formattedWorkshops.length,
+        workshops: formattedWorkshops
       },
       { status: 200 }
     );

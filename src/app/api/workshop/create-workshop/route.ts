@@ -2,32 +2,46 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 import { Workshop } from '@/models/workshop';
 
-
 export async function POST(request: NextRequest) {
   try {
     await connectDB();
     
     const body = await request.json();
     
-    const { title, description, date, duration, instructor, capacity, price } = body;
+    const {
+      title,
+      description,
+      date,
+      time,
+      duration,
+      platform,
+      instructor,
+      capacity,
+      price,
+      topics
+    } = body;
 
     // Validate required fields
-    if (!title || !description || !date) {
+    if (!title || !description || !date || !time || !duration || !instructor || !capacity || !price) {
       return NextResponse.json(
-        { error: 'Missing required fields: title, description, and date are required' },
+        { error: 'Missing required fields' },
         { status: 400 }
       );
     }
 
-    // Create workshop in database
+    // Create workshop
     const workshop = await Workshop.create({
       title,
       description,
       date: new Date(date),
+      time,
       duration,
+      platform: platform || 'Google Meet',
       instructor,
       capacity,
-      price
+      price,
+      topics: topics || [],
+      enrolled: 0,
     });
 
     return NextResponse.json(
