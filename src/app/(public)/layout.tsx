@@ -3,7 +3,6 @@ import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import WorkshopBanner from "@/components/WorkshopBanner";
 
-
 export default function RootLayout({
   children
 }: {
@@ -13,10 +12,10 @@ export default function RootLayout({
     <main>
       <WorkshopBanner />
 
-      <div className="mt-[48px]"> {/* Push navbar down by banner height */}
+      <div className="mt-[48px]">
         <Navbar />
       </div>
-      <div className="pt-[75px]"> {/* Adjust for combined fixed elements */}
+      <div className="pt-[75px]">
         <Toaster />
         {children}
       </div>
