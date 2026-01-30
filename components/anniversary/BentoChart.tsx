@@ -68,7 +68,7 @@ import { chartdata } from "@/data/chartData"
 
 export const AreaChartHero = () => (
   <AreaChart
-    className="h-full"
+    className="h-96"
     data={chartdata}
     index="date"
     categories={["Impressions", "Engagements"]}
