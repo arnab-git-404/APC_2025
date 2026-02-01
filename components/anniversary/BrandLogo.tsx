@@ -23,7 +23,6 @@ const techLogos = [
   },
 ];
 
-// Alternative with image sources
 const imageLogos = [
   {
     src: "/clientLogos/ev.png",
@@ -114,23 +113,25 @@ const imageLogos = [
 
 export default function BrandLogo() {
   return (
-    <div
+    <section
       className="bg-[#FFF1C3]"
       style={{ height: "200px", position: "relative", overflow: "hidden" }}
     >
-      {/* Basic horizontal loop */}
+      <div className="bg-[#FFF1C3] py-16 max-w-4xl mx-auto">
+
       <LogoLoop
         logos={imageLogos}
-        speed={100}
+        speed={60}
         direction="left"
-        logoHeight={80}
+        logoHeight={40}
         gap={60}
         hoverSpeed={0}
         scaleOnHover
         fadeOut
         fadeOutColor="#FFF1C3"
         ariaLabel="Aam Pannaa Brands"
-      />
-    </div>
+        />
+        </div>
+    </section>
   );
 }

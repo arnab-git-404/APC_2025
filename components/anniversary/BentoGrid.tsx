@@ -82,7 +82,7 @@ const features = [
     Icon: BellIcon,
     name: "10 Lakhs+ Impressions ",
     description:
-      "Get notified when someone shares a file or mentions you in a comment.",
+      "short description.",
     href: "/",
     cta: "Learn more",
     background: <AnimatedHighlightedAreaChart />,
@@ -92,8 +92,8 @@ const features = [
 
 export function BentoDemo() {
   return (
-    <section className="min-h-screen bg-[#FFF1C3]">
-      <BentoGrid className=" lg:grid-rows-2 px-4 lg:px-32">
+    <section className="min-h-screen bg-[#FFF1C3] flex items-center justify-center">
+      <BentoGrid className=" lg:grid-rows-2 px-4 lg:px-32 ">
         {features.map((feature) => (
           <BentoCard key={feature.name} {...feature} />
         ))}
