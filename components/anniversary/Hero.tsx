@@ -83,13 +83,14 @@ export default function Hero() {
   const floatingIcons = [
     { Icon: Heart, position: "top-50 right-40", delay: "0s" },
     { Icon: Users, position: "bottom-40 right-70", delay: "0.2s" },
-    { Icon: Globe, position: "top-80 right-96", delay: "0.4s" },
     { Icon: Trophy, position: "bottom-45 left-96", delay: "0.6s" },
     { Icon: Award, position: "top-40 left-60", delay: "0.8s" },
   ]
 
   return (
-    <section className="relative min-h-screen flex items-start overflow-hidden">
+    <section className="relative min-h-screen flex items-start overflow-hidden"
+   
+    >
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
@@ -129,10 +130,10 @@ export default function Hero() {
         </div>
 
         {/* Heading */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-[#5B4100] mb-2 leading-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl text-[#5B4100] mb-2 leading-tight"  style={{ fontFamily: "Recoleta, serif" }}>
           Two Years In
         </h1>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#5B4100] mb-6 leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#5B4100] mb-6 leading-tight"  style={{ fontFamily: "Recoleta, serif" }}>
           Just Getting Started.
         </h2>
 
@@ -145,10 +146,10 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-12 justify-center items-center">
-          <button className="w-44 h-10 px-3 sm:w-auto bg-[#8B7355] text-white rounded-full font-medium hover:bg-[#6B5540] transition-all duration-300 hover:scale-105 shadow-lg">
+          <button className="w-44 h-10 px-3.5 sm:w-auto bg-[#8B7355] text-white rounded-full font-medium hover:bg-[#6B5540] transition-all duration-300 hover:scale-105 shadow-lg">
             work with us
           </button>
-          <button className="w-44 h-10 sm:w-auto px-3 bg-transparent border-2 border-[#8B7355] text-[#6B5540] rounded-full font-medium hover:bg-[#8B7355] hover:text-white transition-all duration-300 hover:scale-105">
+          <button className="w-44 h-10 sm:w-auto px-3.5 bg-transparent border-2 border-[#8B7355] text-[#6B5540] rounded-full font-medium hover:bg-[#8B7355] hover:text-white transition-all duration-300 hover:scale-105">
             see our journey
           </button>
         </div>
@@ -161,7 +162,7 @@ export default function Hero() {
           alt="Mascot"
           width={450}
           height={450}
-          className="object-contain"
+          className="object-contain animate-pulse "
         />
       </div>
 
