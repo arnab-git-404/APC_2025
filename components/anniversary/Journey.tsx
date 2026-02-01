@@ -100,6 +100,8 @@
 
 import CircularGallery from "@/components/CircularGallery";
 import { RetroGrid } from "@/components/ui/retro-grid";
+import { isMobile } from 'react-device-detect';
+
 
 export default function Journey() {
   return (
@@ -121,14 +123,14 @@ export default function Journey() {
       <div className="relative z-10 flex items-center justify-center h-[360px] sm:h-[420px] md:h-[500px]">
         <CircularGallery
           /* MOBILE FIRST */
-          bend={1.8}
-          scrollSpeed={1.2}
+          bend={ isMobile ? 1.8 : 3}
+          scrollSpeed={isMobile ? 1.2 : 2}
           scrollEase={0.04}
           borderRadius={0.1}
-          textColor="#ffffff"
+          textColor="#8C6400"
 
           /* DESKTOP OVERRIDES */
-          className="md:[--bend:3] md:[--scrollSpeed:2]"
+          // className="md:[--bend:3] md:[--scrollSpeed:2]"
         />
       </div>
 
