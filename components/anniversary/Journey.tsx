@@ -129,8 +129,6 @@ export default function Journey() {
           borderRadius={0.1}
           textColor="#8C6400"
 
-          /* DESKTOP OVERRIDES */
-          // className="md:[--bend:3] md:[--scrollSpeed:2]"
         />
       </div>
 
