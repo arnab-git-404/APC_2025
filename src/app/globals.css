@@ -172,3 +172,81 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+::view-transition-old(root), ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+
+
+
+/* Quill content rendering */
+.prose u {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.prose a[target="_blank"]::after {
+  content: " ↗";
+  font-size: 0.8em;
+}
+
+/* Fix spacing issues */
+.prose > * + * {
+  margin-top: 1rem;
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+/* Handle empty list items */
+.prose li:empty {
+  display: none;
+}
+
+
+/* Force list styles */
+.prose ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5rem !important;
+  margin-left: 0 !important;
+}
+
+.prose ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
+  margin-left: 0 !important;
+}
+
+.prose li {
+  display: list-item !important;
+  margin-bottom: 0.5rem;
+}
+
+/* Remove empty list items */
+.prose li:empty {
+  display: none !important;
+}
+
+/* Nested lists */
+.prose ol ol,
+.prose ul ul,
+.prose ol ul,
+.prose ul ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
