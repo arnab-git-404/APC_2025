@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache";
 
 export async function POST(req: NextRequest) {
   try {
-    // await connectDB();
+    await connectDB();
 
     const body = await req.json();
     const { title, description, mainImage, content, tags } = body;
