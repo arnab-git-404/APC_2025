@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
 
     // Send email
     const { data, error } = await resend.emails.send({
-      from: "Workshop <workshop@aampanna.net>",
+      from: "Aam Pannaa Creations <workshop@notifications.aampanna.net>",
       to: email,
       subject: `Congratulations, You're confirmed for ${workshopTitle}! 🎉`,
       html: workshopEmailTemplate({
