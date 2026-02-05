@@ -324,7 +324,7 @@ function BlogListContent({ initialData }: { initialData: ApiResponse }) {
   );
 }
 
-export default function BlogListClient({ initialData }: { initialData: any }) {
+export default function BlogListClient({ initialData }: { initialData: ApiResponse }) {
   return (
     <Suspense
       fallback={
