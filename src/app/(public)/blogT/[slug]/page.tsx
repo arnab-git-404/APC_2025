@@ -10,7 +10,8 @@ import { notFound } from "next/navigation";
 import ShareButton from "@/components/ShareButton";
 import "react-quill/dist/quill.snow.css";
 
-export const revalidate = 60 * 60 * 24 * 7; // once per week
+// No Need to validate each blog 
+// export const revalidate = 604800; 
 
 type Blog = {
   _id: string;
