@@ -1,6 +1,5 @@
 "use client";
 
-import { Code, Share2, User, Palette, TrendingUp, Clock } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 

@@ -71,14 +71,14 @@ const Hero = () => {
 
           {/* Call to Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up pointer-events-auto">
-            <button className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl touch-manipulation">
+            <button className="hover:cursor-pointer group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl touch-manipulation">
               <Link href="/services">
                 <span className="relative z-10">Explore Our Work</span>
               </Link>
               <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
             </button>
 
-            <button className="px-8 py-4 border-2 border-gray-800 text-gray-800 font-semibold rounded-full transition-all duration-300 hover:bg-gray-800 hover:text-white hover:scale-105 hover:shadow-xl touch-manipulation">
+            <button className="hover:cursor-pointer px-8 py-4 border-2 border-gray-800 text-gray-800 font-semibold rounded-full transition-all duration-300 hover:bg-gray-800 hover:text-white hover:scale-105 hover:shadow-xl touch-manipulation">
               <Link href="/#contact-form">Get In Touch</Link>
             </button>
           </div>
