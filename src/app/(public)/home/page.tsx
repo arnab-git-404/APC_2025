@@ -10,15 +10,14 @@ export const dynamic = "force-static";
 
 export default function page() {
   return (
-    <html>
-      <body>
+ <>
         <Hero />
         <WhoWeAre />
         <Services />
         <Testimonials />
         <FeatureSection />
         <Form />
-      </body>
-    </html>
+ </>
+ 
   );
 }

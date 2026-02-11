@@ -14,7 +14,7 @@ export default function WorkshopHero() {
     "inside" | "normal" | "outside" | undefined
   >("outside");
 
-  const handleOpen = (size: String) => {
+  const handleOpen = (size: string) => {
     // setSize(size);
     onOpen();
   };
